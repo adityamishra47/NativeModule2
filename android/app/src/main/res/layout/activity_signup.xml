@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".SignupActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/signup"
+            android:textColor="#222222"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etSignupMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginVertical="12dp"
+            android:hint="@string/mobile_number"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/etSignupEmail"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginVertical="12dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/etSignupUsername"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginVertical="12dp"
+            android:hint="@string/username" />
+
+        <EditText
+            android:id="@+id/etSignupPassword"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginVertical="12dp"
+            android:autofillHints="password"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="12dp"
+            android:background="#2196F3"
+            android:text="@string/signup"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+</ScrollView>
