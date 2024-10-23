@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Text,
     View,
@@ -9,17 +9,21 @@ import {
 } from 'react-native';
 
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from 'react-redux'
+import { loginData, signinData } from "./redux/profileSlice"
 
 export default function AuthPage() {
 
     const { LoginSignupModule } = NativeModules;
     const eventEmitter = new NativeEventEmitter();
     const navigation = useNavigation()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let eventListener = eventEmitter.addListener("loginEvent", (param) => {
-            param.navigateFrom = 'Login';
-            navigation.navigate("ProfileInfo", param);
+            console.log(param);
+            dispatch(loginData(param));
+            navigation.navigate("Dashboard", param);
         })
 
         return () => {
@@ -30,7 +34,7 @@ export default function AuthPage() {
     useEffect(() => {
         let eventListener = eventEmitter.addListener("signupEvent", (param) => {
             param.navigateFrom = 'Signup';
-            navigation.navigate("ProfileInfo", param);
+            navigation.navigate("Dashboard", param);
         })
 
         return () => {
@@ -43,8 +47,11 @@ export default function AuthPage() {
 
             <Text
                 style={styles.btnStyle}
-                onPress={() => LoginSignupModule.openLoginPage()}>Login</Text>
+                onPress={() => navigation.navigate('OtpView')}>Login with otp</Text>
 
+            <Text
+                style={styles.btnStyle}
+                onPress={() => LoginSignupModule.openLoginPage()}>Login with email</Text>
 
             <Text
                 style={styles.btnStyle}
@@ -70,5 +77,5 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontWeight: "500",
         fontSize: 16
-    }
+    },
 });
